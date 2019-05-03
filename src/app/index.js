@@ -18,11 +18,11 @@ app.use(async (ctx, next) => {
   }
 });
 const pug = new Pug({
-  viewPath: path.join(__dirname, 'views'),
+  viewPath: path.join(__dirname, '../../views'),
   debug: false,
   pretty: false,
   compileDebug: false,
-  basedir: path.join(__dirname, 'views'),
+  basedir: path.join(__dirname, '../../views'),
 });
 pug.use(app);
 
