@@ -4,7 +4,8 @@
   "description": "Task manager",
   "scripts": {
     "test": "jest",
-    "build": "npx webpack -p --env production"
+    "build": "npx webpack -p --env production",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
