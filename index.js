@@ -3,10 +3,14 @@ import Pug from 'koa-pug';
 import Rollbar from 'rollbar';
 import Router from 'koa-router';
 import path from 'path';
+import dotenv from 'dotenv';
 // import koaWebpack from 'koa-webpack';
 // import webpackConfig from './webpack.config';
 
 export default () => {
+  if (process.env.NODE_ENV !== 'production') {
+    dotenv.config();
+  }
   const app = new Koa();
   const rollbar = new Rollbar(process.env.RB_TOKEN);
   const router = new Router();

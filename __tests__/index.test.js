@@ -1,13 +1,11 @@
 import request from 'supertest';
 import app from '..';
-import dotenv from 'dotenv';
 
 describe('Task manager', () => {
   let server;
   let agent;
 
   beforeEach(() => {
-    dotenv.config();
     server = app().listen(3000);
     agent = request.agent(server);
   });
