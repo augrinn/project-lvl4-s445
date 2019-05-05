@@ -1,8 +1,11 @@
 install:
 	npm install
 
+build:
+	npm run build
+
 start:
-	npx babel-node -- src/index.js
+	npx babel-node -- index.js
 
 lint:
 	npx eslint .

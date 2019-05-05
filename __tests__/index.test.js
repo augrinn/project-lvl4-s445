@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../src/app';
+import app from '..';
 
 describe('Task manager', () => {
   const server = app.listen(3000);

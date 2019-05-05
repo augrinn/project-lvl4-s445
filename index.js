@@ -4,6 +4,8 @@ import Rollbar from 'rollbar';
 import dotenv from 'dotenv';
 import Router from 'koa-router';
 import path from 'path';
+import koaWebpack from 'koa-webpack';
+import webpackConfig from './webpack.config';
 
 dotenv.config();
 const app = new Koa();
@@ -18,13 +20,18 @@ app.use(async (ctx, next) => {
   }
 });
 const pug = new Pug({
-  viewPath: path.join(__dirname, '../../views'),
+  viewPath: path.join(__dirname, 'views'),
   debug: false,
   pretty: false,
   compileDebug: false,
-  basedir: path.join(__dirname, '../../views'),
+  basedir: path.join(__dirname, 'views'),
 });
 pug.use(app);
+
+if (process.env.NODE_ENV !== 'production') {
+  koaWebpack({ config: webpackConfig })
+    .then(webpackMiddleware => app.use(webpackMiddleware));
+}
 
 router.get('/', async (ctx) => {
   const data = { title: 'Hey', message: 'Hello there!' };
@@ -32,5 +39,11 @@ router.get('/', async (ctx) => {
 });
 
 app.use(router.routes());
+
+if (!module.parent) {
+  app.listen(process.env.PORT || 5000, () => {
+    console.log('start');
+  });
+}
 
 export default app;
