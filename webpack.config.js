@@ -1,7 +1,7 @@
 const path = require('path');
 
-const NODE_ENV = process.env.NODE_ENV || 'development';
-const devmode = (NODE_ENV === 'devolopment');
+const NODE_ENV = process.env.NODE_ENV === 'test' ? 'development' : process.env.NODE_ENV || 'development';
+const devmode = (NODE_ENV === 'development' || NODE_ENV === 'test');
 
 module.exports = {
   mode: NODE_ENV,
@@ -11,8 +11,6 @@ module.exports = {
     filename: 'main.js',
     publicPath: '/public/assets/',
   },
-  watch: devmode,
-  devtool: devmode ? 'inline-cheap-module-source-map' : false,
   module: {
     rules: [
       {

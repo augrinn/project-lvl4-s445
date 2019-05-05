@@ -1,11 +1,20 @@
 import request from 'supertest';
 import app from '..';
+import dotenv from 'dotenv';
 
 describe('Task manager', () => {
-  const server = app.listen(3000);
-  const agent = request.agent(server);
-  afterAll(() => {
+  let server;
+  let agent;
+
+  beforeEach(() => {
+    dotenv.config();
+    server = app().listen(3000);
+    agent = request.agent(server);
+  });
+
+  afterEach((done) => {
     server.close();
+    done();
   });
 
   test('GET /', async () => {
