@@ -41,7 +41,6 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "supertest": "^4.0.2",
-    "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1"
   },
   "dependencies": {
@@ -54,6 +53,7 @@
     "koa-router": "^7.4.0",
     "koa-webpack": "^5.2.2",
     "popper.js": "^1.15.0",
-    "rollbar": "^2.6.1"
+    "rollbar": "^2.6.1",
+    "webpack": "^4.30.0"
   }
 }
