@@ -6,7 +6,7 @@ describe('Task manager', () => {
   let agent;
 
   beforeEach(() => {
-    server = app().listen(3000);
+    server = app.listen(3000);
     agent = request.agent(server);
   });
 
