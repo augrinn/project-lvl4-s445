@@ -8,9 +8,7 @@ import dotenv from 'dotenv';
 // import webpackConfig from './webpack.config';
 
 export default () => {
-  if (process.env.NODE_ENV !== 'production') {
-    dotenv.config();
-  }
+  dotenv.config();
   const app = new Koa();
   const rollbar = new Rollbar(process.env.RB_TOKEN);
   const router = new Router();
