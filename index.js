@@ -4,14 +4,14 @@ import Rollbar from 'rollbar';
 import Router from 'koa-router';
 import path from 'path';
 import dotenv from 'dotenv';
-// import koaWebpack from 'koa-webpack';
-// import webpackConfig from './webpack.config';
+import serve from 'koa-static';
 
 dotenv.config();
 const app = new Koa();
 const rollbar = new Rollbar(process.env.RB_TOKEN);
 const router = new Router();
 
+app.use(serve(path.join(__dirname, 'public')));
 app.use(async (ctx, next) => {
   try {
     await next();
@@ -28,13 +28,8 @@ const pug = new Pug({
 });
 pug.use(app);
 
-// if (process.env.NODE_ENV !== 'production') {
-//   koaWebpack({ config: webpackConfig })
-//     .then(webpackMiddleware => app.use(webpackMiddleware));
-// }
-
 router.get('/', async (ctx) => {
-  const data = { title: 'Hey', message: 'Hello there!' };
+  const data = { title: 'Task manager', message: 'Welcome to the task Manager!' };
   await ctx.render('index', data);
 });
 

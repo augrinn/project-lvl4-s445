@@ -5,7 +5,7 @@ build:
 	npm run build
 
 start:
-	npx babel-node -- index.js
+	nodemon --exec "npx babel-node -- index.js"
 
 lint:
 	npx eslint .
