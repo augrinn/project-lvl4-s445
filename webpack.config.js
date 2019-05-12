@@ -1,9 +1,9 @@
 const path = require('path');
 
-const NODE_ENV = process.env.NODE_ENV === 'test' ? 'development' : process.env.NODE_ENV || 'development';
+const mode = process.env.NODE_ENV === 'test' ? 'development' : process.env.NODE_ENV || 'development';
 
 module.exports = {
-  mode: NODE_ENV,
+  mode: mode,
   entry: [path.resolve(__dirname, 'src/index.js')],
   output: {
     path: path.join(__dirname, 'public', 'assets'),

@@ -1,4 +1,6 @@
 import Koa from 'koa';
+import koaWebpack from 'koa-webpack';
+import webpackConfig from './webpack.config';
 import Pug from 'koa-pug';
 import Rollbar from 'rollbar';
 import Router from 'koa-router';
@@ -34,6 +36,11 @@ router.get('/', async (ctx) => {
 });
 
 app.use(router.routes());
+
+if (process.env.NODE_ENV !== 'production') {
+  koaWebpack({ config: webpackConfig })
+  .then(m => app.use(m));
+}
 
 if (!module.parent) {
   app.listen(process.env.PORT || 5000, () => {
