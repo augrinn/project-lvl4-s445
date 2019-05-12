@@ -27,7 +27,7 @@ describe('Task manager', () => {
     }
     expect(res).toHaveHTTPStatus(200);
   });
-  
+
   it('GET 404', async () => {
     const res = await agent.get('/wrong-path');
     expect(res).toHaveHTTPStatus(404);

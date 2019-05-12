@@ -3,7 +3,7 @@ const path = require('path');
 const mode = process.env.NODE_ENV === 'test' ? 'development' : process.env.NODE_ENV || 'development';
 
 module.exports = {
-  mode: mode,
+  mode,
   entry: [path.resolve(__dirname, 'src/index.js')],
   output: {
     path: path.join(__dirname, 'public', 'assets'),

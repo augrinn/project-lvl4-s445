@@ -1,12 +1,12 @@
 import Koa from 'koa';
 import koaWebpack from 'koa-webpack';
-import webpackConfig from './webpack.config';
 import Pug from 'koa-pug';
 import Rollbar from 'rollbar';
 import Router from 'koa-router';
 import path from 'path';
 import dotenv from 'dotenv';
 import serve from 'koa-static';
+import webpackConfig from './webpack.config';
 
 dotenv.config();
 const app = new Koa();
@@ -39,7 +39,7 @@ app.use(router.routes());
 
 if (process.env.NODE_ENV !== 'production') {
   koaWebpack({ config: webpackConfig })
-  .then(m => app.use(m));
+    .then(m => app.use(m));
 }
 
 if (!module.parent) {
