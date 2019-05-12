@@ -40,6 +40,7 @@
     "eslint-plugin-jest": "^22.5.1",
     "jest": "^24.7.1",
     "jest-cli": "^24.7.1",
+    "jest-supertest-matchers": "0.0.2",
     "jquery": "^3.4.1",
     "koa": "^2.7.0",
     "koa-pug": "^3.0.0-2",
@@ -57,7 +58,6 @@
     "webpack-cli": "^3.3.1"
   },
   "devDependencies": {
-    "jest-supertest-matchers": "0.0.2",
     "nodemon": "^1.19.0"
   }
 }
